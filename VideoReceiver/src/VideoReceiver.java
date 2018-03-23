@@ -1,15 +1,8 @@
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
 import java.io.DataInputStream;
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.nio.ByteBuffer;
 
 public class VideoReceiver implements Runnable {
 	
