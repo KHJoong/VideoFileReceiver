@@ -23,7 +23,7 @@ public class VideoReceiver implements Runnable {
 			
 			while(true) {
 				// 클라이언트와의 연결을 기다립니다.
-				Socket socket =serverSocket.accept();
+				Socket socket = serverSocket.accept();
 				
 				DataInputStream dis = new DataInputStream(socket.getInputStream());
 				
@@ -46,7 +46,7 @@ public class VideoReceiver implements Runnable {
 				int current = 0;
 				int bytesRead = dis.read(buffer, 0, length);
 				current = bytesRead;
-				System.out.println("Receiving : "+(current*100)/length+"%  ");
+				System.out.println("Receiving : "+(int)((float)current/(float)length*(float)100)+"%  "+"current : "+ current + " length : "+length);
 				do {
 					bytesRead = dis.read(buffer, current, (length - current));
 			        if (bytesRead > 0) {
@@ -54,7 +54,7 @@ public class VideoReceiver implements Runnable {
 			        } else {
 			        	break;
 			        }
-			        System.out.println("Receiving : "+(current*100)/length+"%  ");
+			        System.out.println("Receiving : "+(int)((float)current/(float)length*(float)100)+"%  "+ current + " length : "+length);
 				} while (bytesRead > -1);
 				
 				// 읽어온 stream을 file에 출력합니다.
@@ -68,7 +68,6 @@ public class VideoReceiver implements Runnable {
 				socket.close();
 				
 				System.out.println("Receive End");
-				
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
